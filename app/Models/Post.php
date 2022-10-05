@@ -16,5 +16,10 @@ class Post extends Model
         'konten',
         'id_user',
     ];
+
+    public function comment() 
+    {
+        return $this->hasMany(Comment::class, 'id_post');
+    }
    
 }
