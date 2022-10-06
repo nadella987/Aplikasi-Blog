@@ -34,7 +34,9 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
     //comment endpoint
+    Route::get('/comment', [CommentController::class, 'index'])->name('comment.index');
     Route::post('/posts/{post}/comment', [CommentController::class, 'store'])->name('comment.store');
+    Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
 });
 
 Route::get('/posts/{post}',[PostController::class, 'show'])->name('posts.show');

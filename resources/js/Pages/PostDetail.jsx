@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, } from 'react'
 import {
   FaceFrownIcon,
   FaceSmileIcon,
@@ -29,6 +29,15 @@ export default function PostDetail(props){
   const form = useForm({
     'konten': "",
   });
+
+  // useEffect(() => {
+
+  //   //parse url untuk mendapatkan id komentar
+  //   const commentIdFromUrl = '';
+
+  //   //cari element yang memiliki id komentar dari url
+  //   const scrollToElement = document.getElementById();
+  // })
 
   function handleDelete() {
     Swal.fire({
@@ -86,7 +95,7 @@ export default function PostDetail(props){
       <div className="flex mt-12 mx-auto mt-12 max-w-lg">
       <ul role="list" className="divide-y divide-gray-200 w-full">
         {props.comment.map((comment ) => (
-          <li key={comment.id} className="py-4">
+          <li key={comment.id} className="py-4" id={`comment-${comment.id}`}>
             <div className="flex space-x-3">
               <div className="flex-1 space-y-1">
                 <div className="flex items-center justify-between">

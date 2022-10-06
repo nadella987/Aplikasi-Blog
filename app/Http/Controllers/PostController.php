@@ -72,9 +72,10 @@ class PostController extends Controller
             );
             
         }),
+        
         'can_update' => request()->user()?->can('update', $post),
         'can_delete' => request()->user()?->can('delete', $post),
-        
+
         ]);
     
     }

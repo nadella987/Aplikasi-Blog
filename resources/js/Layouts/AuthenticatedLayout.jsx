@@ -28,6 +28,10 @@ export default function Authenticated({ auth, header, children }) {
                                  active={route().current("posts.index")}>
                                    My Post
                                 </NavLink>
+                                <NavLink href={route("comment.index")}
+                                 active={route().current("comment.index")}>
+                                   My Comment
+                                </NavLink>
                             </div>
                         </div>
 
@@ -99,8 +103,12 @@ export default function Authenticated({ auth, header, children }) {
                             Dashboard
                         </ResponsiveNavLink>
                         <ResponsiveNavLink href={route("posts.index")} active={route().current("posts")}>
-                            Dashboard
+                            My Post
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route("comment.index")}
+                                 active={route().current("comment.index")}>
+                                   My Comment
+                         </ResponsiveNavLink>
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
