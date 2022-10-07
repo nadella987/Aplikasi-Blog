@@ -7,6 +7,7 @@ import {
   HeartIcon,
   XMarkIcon,
 } from '@heroicons/react/20/solid'
+import CommentListItem from '@/Components/CommentListItem';
 import { Listbox, Transition } from '@headlessui/react'
 import {Link, useForm} from "@inertiajs/inertia-react";
 import { Inertia } from '@inertiajs/inertia';
@@ -104,29 +105,29 @@ export default function PostDetail(props){
             <div className="prose prose-lg prose-indigo mx-auto mt-6 text-gray-500">
               <p> {props.post.konten} </p>
             </div>
+            
 
       {/* comment list */}
       <div className="flex mt-12 mx-auto mt-12 max-w-lg">
       <ul role="list" className="divide-y divide-gray-200 w-full">
         {props.comment.map((comment ) => (
-          <li key={comment.id} className="py-4" id={`comment-${comment.id}`}>
-            <div className="flex space-x-3">
-              <div className="flex-1 space-y-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium">{comment.creator.name}</h3>
-                  <p className="text-sm text-gray-500">{comment.timeago}</p>
-                </div>
-                <p className="text-sm text-gray-500 max-w-xl">
-                  {comment.konten}
-                </p>
-              </div>
-            </div>
+          <li key={comment.id} 
+          className="py-4" 
+          id={`comment-${comment.id}`}>
+
+            <CommentListItem  
+            creatorName={comment.creatorName} 
+            timeago={comment.timeago} 
+            konten={comment.konten} 
+            canEdit={comment.can_edit} 
+            canDelete={comment.can_delete} />
+             
           </li>
         ))}
       </ul>
     </div>
 
-     {/* comment  */}     
+     {/* comment colom*/}     
     {props.auth.user && ( <div className="flex items-start space-x-4 mt-12 mx-auto mt-12 max-w-lg">
         <div className="min-w-0 flex-1">
           <form onSubmit={submitComment} className="relative">

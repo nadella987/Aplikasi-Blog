@@ -68,7 +68,11 @@ class PostController extends Controller
         'comment' => $post->comment->load('creator')->map(function ($comment){
             return array_merge(
                 $comment->toArray(),
-                ['timeago' => $comment->created_at->diffForHumans()],
+                [
+                    'timeago' => $comment->created_at->diffForHumans(),
+                    'can_edit' =>request()->user()?->can('update', $comment),
+                    'can_delete' =>request()->user()?->can('delete', $comment),
+                ],
             );
             
         }),
