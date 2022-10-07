@@ -1,4 +1,4 @@
-import { Fragment, useState, } from 'react'
+import { Fragment, useState, useEffect} from 'react'
 import {
   FaceFrownIcon,
   FaceSmileIcon,
@@ -30,14 +30,28 @@ export default function PostDetail(props){
     'konten': "",
   });
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   //parse url untuk mendapatkan id komentar
-  //   const commentIdFromUrl = '';
+    //parse url untuk mendapatkan id komentar
+    const commentIdFromUrl = window.location.hash.substring(1);
 
-  //   //cari element yang memiliki id komentar dari url
-  //   const scrollToElement = document.getElementById();
-  // })
+    //cari element yang memiliki id komentar dari url
+    const scrollToElement = document.getElementById(commentIdFromUrl);
+
+   
+     if (scrollToElement){
+      //scroll ke element tersebut
+      scrollToElement?.scrollIntoView({ behavior: "smooth" });
+
+      // highlight komentar yang di tambahakan
+      setTimeout(() => scrollToElement.classList.add("bg-yellow-50"), 500);
+
+      //hapus highlight setelah 2 dtk
+      setTimeout(() => scrollToElement.classList.remove("bg-yellow-50"), 2000);
+        
+     }
+    
+  }, []);
 
   function handleDelete() {
     Swal.fire({
@@ -241,7 +255,7 @@ export default function PostDetail(props){
       </div>
       </div>
       )}
-      </div>
+    </div>
 </div>
   )
 }

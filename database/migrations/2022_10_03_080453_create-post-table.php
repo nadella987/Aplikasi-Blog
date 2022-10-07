@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->text('konten');
-            $table->foreignId('id_user')->constrained('users');
+            $table->foreignId('id_user')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
