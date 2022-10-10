@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     //comment endpoint
     Route::get('/comment', [CommentController::class, 'index'])->name('comment.index');
     Route::post('/posts/{post}/comment', [CommentController::class, 'store'])->name('comment.store');
+    Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comment.update');
     Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
 });
 

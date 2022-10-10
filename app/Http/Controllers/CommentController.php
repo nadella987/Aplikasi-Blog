@@ -32,17 +32,29 @@ class CommentController extends Controller
 
     
             }
+
+            public function update(Request $request, Comment $comment)
+    {
+        $this->authorize('update', $comment);
+
+        $validated = $request->validate([
+            'konten' => ['required', 'string', 'min:5'],
+
+        ]);
+        $comment->update($validated);
+                return back();
+
+    
+            }
             
-        public function destroy(Comment $comment){
+        public function destroy(Comment $comment)
+        {
             
-        // $this->authorize('delete', $comment);
+        $this->authorize('delete', $comment);
+
         $comment->delete();
 
-        return redirect()->back()->with('flash', [
-            'type' => 'success',
-            'title' => 'Comment Telah Dihapus',
-            'body' => 'Comment Berhasil Dihapus',
-        ]);
+        return back();
         }
     
 

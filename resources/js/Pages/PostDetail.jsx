@@ -116,6 +116,7 @@ export default function PostDetail(props){
           id={`comment-${comment.id}`}>
 
             <CommentListItem  
+            commentId={comment.id}
             creatorName={comment.creatorName} 
             timeago={comment.timeago} 
             konten={comment.konten} 
